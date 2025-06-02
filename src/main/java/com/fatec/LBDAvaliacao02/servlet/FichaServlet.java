@@ -20,14 +20,16 @@ public class FichaServlet {
 	public ModelAndView besteiroGet(@PathVariable("classe") String classe,ModelMap model) {
 		fichaDao fichaDao = new fichaDao();
 		Personagem p = new Personagem();
+		
 		try {
 			p = fichaDao.buscarFicha(classe);
 		} catch (IOException e) {
 			e.printStackTrace();	
 		}
+		System.out.println("a");
 		model.addAttribute("personagem",p);
 		return new ModelAndView("ficha");
-
+		
 	}
 	
 	@RequestMapping(name = "ficha", value = "/ficha/{classe}", method = RequestMethod.POST)
